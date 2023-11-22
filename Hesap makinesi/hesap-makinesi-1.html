@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Makinesi</title>
+    <style>
+
+        *{
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html{
+
+            font-size: 10px;
+        }
+
+        body{
+
+            font-size: 1.2rem;
+            margin:0;
+            color:#fff;
+            background-color: #EEEEEE;
+        }
+
+        .hesap-makinesi{
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+        }
+        
+        td {
+
+            font-size: 2rem;
+        }
+
+        .ekran{
+
+            border:none;
+            border-radius:20px; 
+            background-color: #222831;     
+            width: 100%; 
+            height: 120px;
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+            margin-bottom: 10px;
+        }
+        
+        .sonuc{ 
+
+            font-size: 3rem;
+            border-radius:20px; 
+            width: 100%; 
+            height: 120px;
+            text-align: right;
+            background-color: #222831;
+            color: #fff;
+            padding:0 20px;
+            
+        }
+
+        .tuslar{
+
+            padding: 10px;
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+            background-color: #222831;
+            border-radius: 20px;
+        }
+
+        .inp{
+
+            height: 70px;
+            width: 70px;
+            font-size: 2rem;
+            text-align: center;
+            border: none;
+            border-radius: 50px 50px 50px 50px;
+        }
+        
+        .color{
+
+            transition:0.5s ease;
+            color: #222831;
+            background-color:#00ADB5;
+        }
+        
+        .colors{
+
+            transition:0.5s ease;
+            color: #222831;
+            background-color: #FC5185;
+        }
+
+        .btn {
+
+            background-color: #222831;
+            color: #EEEEEE;
+            transition:0.5s ease;
+        }
+
+        .colors:hover{
+
+            background-color: #222831;
+            color: #FC5185;
+        }
+
+        .color:hover{
+
+            background-color: #222831;
+            color: #00ADB5;
+        }
+
+        .btn:hover{
+
+            background-color:#393E46;
+            color: #EEEEEE;
+        }
+        
+    </style>
+    <script>
+        
+        function deleteLastCharacter() {
+            var currentValue = document.querySelector('.sonuc').value;
+            document.querySelector('.sonuc').value = currentValue.slice(0, -1);
+        }
+        
+    </script>
+</head>
+<body>
+    <section class="hesap-makinesi">
+        <table class="ekran">
+            <tr>
+                <td colspan="3"><input type="text" class="sonuc" name="display" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" size="10" readonly></td> 
+            </tr>
+        </table>
+        <table class="tuslar">
+            <tr>
+                <td><input type="button" value="AC" class="inp colors" onclick="document.querySelector('.sonuc').value=''"></td> 
+                <td><input type="button" value="Sil" class="inp colors" onclick="deleteLastCharacter()"></td>
+                <td><input type="button" value="%" class="inp color" onclick="document.querySelector('.sonuc').value+='/100'"></td>
+                <td><input type="button" value="/" class="inp color" onclick="document.querySelector('.sonuc').value+='/'"></td>         
+            </tr>
+            <tr>
+                <td><input type="button" value="7" class="inp btn" onclick="document.querySelector('.sonuc').value+='7'"></td>
+                <td><input type="button" value="8" class="inp btn" onclick="document.querySelector('.sonuc').value+='8'"></td>
+                <td><input type="button" value="9" class="inp btn" onclick="document.querySelector('.sonuc').value+='9'"></td>
+                <td><input type="button" value="x" class="inp color" onclick="document.querySelector('.sonuc').value+='*'"></td>         
+            </tr>
+            <tr>
+                <td><input type="button" value="4" class="inp btn" onclick="document.querySelector('.sonuc').value+='4'"></td>
+                <td><input type="button" value="5" class="inp btn" onclick="document.querySelector('.sonuc').value+='5'"></td>
+                <td><input type="button" value="6" class="inp btn" onclick="document.querySelector('.sonuc').value+='6'"></td>
+                <td><input type="button" value="-" class="inp color" onclick="document.querySelector('.sonuc').value+='-'"></td>         
+            </tr>
+            <tr>
+                <td><input type="button" value="1" class="inp btn" onclick="document.querySelector('.sonuc').value+='1'"></td>
+                <td><input type="button" value="2" class="inp btn" onclick="document.querySelector('.sonuc').value+='2'"></td>
+                <td><input type="button" value="3" class="inp btn" onclick="document.querySelector('.sonuc').value+='3'"></td>
+                <td><input type="button" value="+" class="inp color" onclick="document.querySelector('.sonuc').value+='+'"></td>         
+            </tr>
+            <tr>
+                <td><input type="button" value="00" class="inp btn" onclick="document.querySelector('.sonuc').value+='00'"></td>
+                <td><input type="button" value="0" class="inp btn" onclick="document.querySelector('.sonuc').value+='0'"></td>
+                <td><input type="button" value="," class="inp color" onclick="document.querySelector('.sonuc').value+='.'"></td>
+                <td><input type="button" value="=" class="inp color" onclick="document.querySelector('.sonuc').value=eval(document.querySelector('.sonuc').value)"></td>         
+            </tr>
+        </table>
+    </section>
+</body>
+</html>
